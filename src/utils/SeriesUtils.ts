@@ -103,7 +103,7 @@ export const series = [
       "/videos/dGhlIGFsaWVuaXN0_3.mp4",
     ],
   },
-  /* {
+  {
     title: "squid game",
     title64: "c3F1aWQgZ2FtZQ==",
     src: [
@@ -111,8 +111,8 @@ export const series = [
       "/videos/c3F1aWQgZ2FtZQ==_2.mp4",
       "/videos/c3F1aWQgZ2FtZQ==_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "stranger things",
     title64: "c3RyYW5nZXIgdGhpbmdz",
     src: [
@@ -120,17 +120,17 @@ export const series = [
       "/videos/c3RyYW5nZXIgdGhpbmdz_2.mp4",
       "/videos/c3RyYW5nZXIgdGhpbmdz_3.mp4",
     ],
-  }, */
-  /* {
-    title: "guillermo del toros cabinet of curiosities",
+  },
+  {
+    title: "guillermo del toro's cabinet of curiosities",
     title64: "Z3VpbGxlcm1vIGRlbCB0b3JvcyBjYWJpbmV0IG9mIGN1cmlvc2l0aWVz",
     src: [
       "/videos/Z3VpbGxlcm1vIGRlbCB0b3JvcyBjYWJpbmV0IG9mIGN1cmlvc2l0aWVz_1.mp4",
       "/videos/Z3VpbGxlcm1vIGRlbCB0b3JvcyBjYWJpbmV0IG9mIGN1cmlvc2l0aWVz_2.mp4",
       "/videos/Z3VpbGxlcm1vIGRlbCB0b3JvcyBjYWJpbmV0IG9mIGN1cmlvc2l0aWVz_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "black mirror",
     title64: "YmxhY2sgbWlycm9y",
     src: [
@@ -138,8 +138,8 @@ export const series = [
       "/videos/YmxhY2sgbWlycm9y_2.mp4",
       "/videos/YmxhY2sgbWlycm9y_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the wheel of time",
     title64: "dGhlIHdoZWVsIG9mIHRpbWU=",
     src: [
@@ -147,8 +147,8 @@ export const series = [
       "/videos/dGhlIHdoZWVsIG9mIHRpbWU=_2.mp4",
       "/videos/dGhlIHdoZWVsIG9mIHRpbWU=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "wednesday",
     title64: "d2VkbmVzZGF5",
     src: [
@@ -156,8 +156,8 @@ export const series = [
       "/videos/d2VkbmVzZGF5_2.mp4",
       "/videos/d2VkbmVzZGF5_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the walking dead: the ones who live",
     title64: "dGhlIHdhbGtpbmcgZGVhZDogdGhlIG9uZXMgd2hvIGxpdmU=",
     src: [
@@ -165,8 +165,8 @@ export const series = [
       "/videos/dGhlIHdhbGtpbmcgZGVhZDogdGhlIG9uZXMgd2hvIGxpdmU=_2.mp4",
       "/videos/dGhlIHdhbGtpbmcgZGVhZDogdGhlIG9uZXMgd2hvIGxpdmU=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the walking dead: daryl dixon",
     title64: "dGhlIHdhbGtpbmcgZGVhZDogZGFyeWwgZGl4b24=",
     src: [
@@ -174,8 +174,8 @@ export const series = [
       "/videos/dGhlIHdhbGtpbmcgZGVhZDogZGFyeWwgZGl4b24=_2.mp4",
       "/videos/dGhlIHdhbGtpbmcgZGVhZDogZGFyeWwgZGl4b24=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the umbrella academy",
     title64: "dGhlIHVtYnJlbGxhIGFjYWRlbXk=",
     src: [
@@ -183,8 +183,8 @@ export const series = [
       "/videos/dGhlIHVtYnJlbGxhIGFjYWRlbXk=_2.mp4",
       "/videos/dGhlIHVtYnJlbGxhIGFjYWRlbXk=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the sandman",
     title64: "dGhlIHNhbmRtYW4=",
     src: [
@@ -192,7 +192,7 @@ export const series = [
       "/videos/dGhlIHNhbmRtYW4=_2.mp4",
       "/videos/dGhlIHNhbmRtYW4=_3.mp4",
     ],
-  }, */
+  },
   /* {
     title: "the last of us",
     title64: "dGhlIGxhc3Qgb2YgdXM=",
