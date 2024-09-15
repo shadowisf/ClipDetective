@@ -6,7 +6,7 @@ import { Modal_1B } from "./Modal";
 import { useNavigate } from "react-router-dom";
 import { getDownloadURL, ref } from "firebase/storage";
 import { firebaseStorage } from "../../firebase";
-import { sleep } from "../utils/GeneralUtils";
+import { sleepFor, waitForEvent } from "../utils/GeneralUtils";
 
 export default function ClipPlayer({ type }: { type: string }) {
   // data types of media data
@@ -40,8 +40,8 @@ export default function ClipPlayer({ type }: { type: string }) {
   const videoElementRef = useRef<HTMLVideoElement>(null);
 
   // sounds
-  const correctSound = new Audio("/sounds/correct.mp3");
-  const incorrectSound = new Audio("/sounds/incorrect.mp3");
+  const correctSound = new Audio("/correct.mp3");
+  const incorrectSound = new Audio("/incorrect.mp3");
 
   // IMPORTANT STATES
   const [currentScore, setCurrentScore] = useState<number>(0);
@@ -52,25 +52,26 @@ export default function ClipPlayer({ type }: { type: string }) {
   // disables user input until done playing
   async function handlePlay() {
     if (videoElementRef.current) {
-      const fullDuration = videoElementRef.current?.duration;
+      const videoElement = videoElementRef.current;
+      const fullDuration = videoElement.duration;
       const bufferTime = 15;
       const randomStart = Math.random() * (fullDuration - bufferTime);
 
-      videoElementRef.current.currentTime = randomStart;
-      setTimestamp(videoElementRef.current.currentTime);
-      videoElementRef.current.volume = 1;
+      videoElement.currentTime = randomStart;
+      setTimestamp(videoElement.currentTime);
+      videoElement.volume = 1;
       setIsClipPlaying(true);
-      videoElementRef.current.load();
+      videoElement.load();
       setIsLoading(true);
 
-      await sleep(2000);
+      await waitForEvent(videoElement, "loadeddata");
 
       setIsLoading(false);
-      videoElementRef.current.play();
+      videoElement.play();
 
-      await sleep(replayDuration);
+      await sleepFor(replayDuration);
 
-      videoElementRef.current ? videoElementRef.current.pause() : "";
+      videoElement.pause();
       setIsClipPlaying(false);
       setIsFirstTimePlay(false);
       setHasUserInput(true);
@@ -104,7 +105,7 @@ export default function ClipPlayer({ type }: { type: string }) {
 
   // replays clip with increments of 5s
   // disables user inputs until done playing
-  function handleReplay() {
+  async function handleReplay() {
     setUserGuess("");
 
     if (videoElementRef.current) {
@@ -116,11 +117,11 @@ export default function ClipPlayer({ type }: { type: string }) {
       setIsClipPlaying(true);
       setHasUserInput(false);
 
-      setTimeout(() => {
-        videoElementRef.current ? videoElementRef.current.pause() : "";
-        setIsClipPlaying(false);
-        setHasUserInput(true);
-      }, replayDuration + 5000);
+      await sleepFor(replayDuration + 5000);
+
+      videoElementRef.current ? videoElementRef.current.pause() : "";
+      setIsClipPlaying(false);
+      setHasUserInput(true);
     }
   }
 
@@ -268,7 +269,7 @@ export default function ClipPlayer({ type }: { type: string }) {
         />
 
         <datalist id="suggestions">
-          {userGuess.length > 2
+          {userGuess.length > 1
             ? allMedia.map((element) => <option value={element.title} />)
             : ""}
         </datalist>
