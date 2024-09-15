@@ -4,6 +4,9 @@ import { movies } from "../utils/MoviesUtils";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import { Modal_1B } from "./Modal";
 import { useNavigate } from "react-router-dom";
+import { getDownloadURL, ref } from "firebase/storage";
+import { firebaseStorage } from "../../firebase";
+import { sleep } from "../utils/GeneralUtils";
 
 export default function ClipPlayer({ type }: { type: string }) {
   // data types of media data
@@ -27,6 +30,7 @@ export default function ClipPlayer({ type }: { type: string }) {
   const [isClipPlaying, setIsClipPlaying] = useState<boolean>(false);
   const [hasUserInput, setHasUserInput] = useState<boolean>(false);
   const [isFirstTimePlay, setIsFirstTimePlay] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // modals
   const [isCorrectModalOpen, setIsModalCorrectOpen] = useState<boolean>(false);
@@ -46,7 +50,7 @@ export default function ClipPlayer({ type }: { type: string }) {
 
   // plays clip at a random timestamp
   // disables user input until done playing
-  function handlePlay() {
+  async function handlePlay() {
     if (videoElementRef.current) {
       const fullDuration = videoElementRef.current?.duration;
       const bufferTime = 15;
@@ -55,15 +59,21 @@ export default function ClipPlayer({ type }: { type: string }) {
       videoElementRef.current.currentTime = randomStart;
       setTimestamp(videoElementRef.current.currentTime);
       videoElementRef.current.volume = 1;
-      videoElementRef.current.play();
       setIsClipPlaying(true);
+      videoElementRef.current.load();
+      setIsLoading(true);
 
-      setTimeout(() => {
-        videoElementRef.current ? videoElementRef.current.pause() : "";
-        setIsClipPlaying(false);
-        setIsFirstTimePlay(false);
-        setHasUserInput(true);
-      }, replayDuration);
+      await sleep(2000);
+
+      setIsLoading(false);
+      videoElementRef.current.play();
+
+      await sleep(replayDuration);
+
+      videoElementRef.current ? videoElementRef.current.pause() : "";
+      setIsClipPlaying(false);
+      setIsFirstTimePlay(false);
+      setHasUserInput(true);
     }
   }
 
@@ -136,10 +146,12 @@ export default function ClipPlayer({ type }: { type: string }) {
   }
 
   // generate media based on type and set it to src and title
-  function generateMedia() {
+  async function generateMedia() {
     switch (type) {
       case "series":
         const generatedSeries = generateSeries();
+        const vid = ref(firebaseStorage, generatedSeries.src);
+        const url = await getDownloadURL(vid);
 
         if (
           currentProgress.includes(generatedSeries.title) ||
@@ -147,7 +159,7 @@ export default function ClipPlayer({ type }: { type: string }) {
         ) {
           return generateMedia();
         } else {
-          setCurrentSrc(generatedSeries.src);
+          setCurrentSrc(url);
           setCurrentTitle(generatedSeries.title);
         }
         break;
@@ -208,6 +220,17 @@ export default function ClipPlayer({ type }: { type: string }) {
           width="900"
           className="rounded-xl"
         />
+
+        {isLoading ? (
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl"
+            style={{ zIndex: -1 }}
+          >
+            loading...
+          </div>
+        ) : (
+          ""
+        )}
 
         {!isClipPlaying ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl">
