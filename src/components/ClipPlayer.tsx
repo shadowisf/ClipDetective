@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { generateSeries, series } from "../utils/SeriesUtils";
-import { generateMovie, movies } from "../utils/MoviesUtils";
+import { movies } from "../utils/MoviesUtils";
 import { PlayIcon } from "@heroicons/react/24/solid";
 import { Modal_1B } from "./Modal";
 import { useNavigate } from "react-router-dom";

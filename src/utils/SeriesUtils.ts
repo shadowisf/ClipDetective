@@ -193,7 +193,7 @@ export const series = [
       "/videos/dGhlIHNhbmRtYW4=_3.mp4",
     ],
   },
-  /* {
+  {
     title: "the last of us",
     title64: "dGhlIGxhc3Qgb2YgdXM=",
     src: [
@@ -201,8 +201,8 @@ export const series = [
       "/videos/dGhlIGxhc3Qgb2YgdXM=_2.mp4",
       "/videos/dGhlIGxhc3Qgb2YgdXM=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "lucifer",
     title64: "bHVjaWZlcg==",
     src: [
@@ -210,8 +210,8 @@ export const series = [
       "/videos/bHVjaWZlcg==_2.mp4",
       "/videos/bHVjaWZlcg==_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "one piece",
     title64: "b25lIHBpZWNl",
     src: [
@@ -219,8 +219,8 @@ export const series = [
       "/videos/b25lIHBpZWNl_2.mp4",
       "/videos/b25lIHBpZWNl_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "mr. robot",
     title64: "bXIuIHJvYm90",
     src: [
@@ -228,8 +228,8 @@ export const series = [
       "/videos/bXIuIHJvYm90_2.mp4",
       "/videos/bXIuIHJvYm90_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "love, death, and robots",
     title64: "bG92ZSwgZGVhdGgsIGFuZCByb2JvdHM=",
     src: [
@@ -237,8 +237,8 @@ export const series = [
       "/videos/bG92ZSwgZGVhdGgsIGFuZCByb2JvdHM=_2.mp4",
       "/videos/bG92ZSwgZGVhdGgsIGFuZCByb2JvdHM=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "fallout",
     title64: "ZmFsbG91dA==",
     src: [
@@ -246,7 +246,7 @@ export const series = [
       "/videos/ZmFsbG91dA==_2.mp4",
       "/videos/ZmFsbG91dA==_3.mp4",
     ],
-  }, */
+  },
   /* {
     title: "breaking bad",
     title64: "YnJlYWtpbmcgYmFk",
