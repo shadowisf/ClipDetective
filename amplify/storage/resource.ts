@@ -1,5 +1,5 @@
 import { defineStorage } from "@aws-amplify/backend";
 
 export const storage = defineStorage({
-  name: "ClipDetective",
+  name: "clipdetective",
 });
