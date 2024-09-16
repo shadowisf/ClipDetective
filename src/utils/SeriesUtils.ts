@@ -243,7 +243,7 @@ export const series = [
       "dGhlIHdhdGNoZXI=_3.mp4",
     ],
   },
-  /* {
+  {
     title: "the walking dead: dead city",
     title64: "dGhlIHdhbGtpbmcgZGVhZDogZGVhZCBjaXR5",
     src: [
@@ -251,8 +251,8 @@ export const series = [
       "dGhlIHdhbGtpbmcgZGVhZDogZGVhZCBjaXR5_2.mp4",
       "dGhlIHdhbGtpbmcgZGVhZDogZGVhZCBjaXR5_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the queens gambit",
     title64: "dGhlIHF1ZWVucyBnYW1iaXQ=",
     src: [
@@ -260,16 +260,7 @@ export const series = [
       "dGhlIHF1ZWVucyBnYW1iaXQ=_2.mp4",
       "dGhlIHF1ZWVucyBnYW1iaXQ=_3.mp4",
     ],
-  }, */
-  /* {
-    title: "the mist",
-    title64: "dGhlIG1pc3Q=",
-    src: [
-      "dGhlIG1pc3Q=_1.mp4",
-      "dGhlIG1pc3Q=_2.mp4",
-      "dGhlIG1pc3Q=_3.mp4",
-    ],
-  }, */
+  },
   /* {
     title: "the lord of the rings: rings of power",
     title64: "dGhlIGxvcmQgb2YgdGhlIHJpbmdzOiByaW5ncyBvZiBwb3dlcg==",

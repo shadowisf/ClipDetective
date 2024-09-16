@@ -22,6 +22,7 @@ export default function ClipPlayer({ type }: { type: string }) {
   // startup states
   const [currentSrc, setCurrentSrc] = useState<string>("");
   const [currentTitle, setCurrentTitle] = useState<string>("");
+  const [clueTitle, setClueTitle] = useState<Array<string>>([]);
   const [timestamp, setTimestamp] = useState<number>(0);
   const [userGuess, setUserGuess] = useState<string>("");
   const [wrongGuesses, setWrongGuesses] = useState<Array<string>>([]);
@@ -48,9 +49,14 @@ export default function ClipPlayer({ type }: { type: string }) {
   const [currentProgress, setCurrentProgress] = useState<Array<string>>([]);
   const [allMedia] = useState<Array<Clip>>(type === "series" ? series : movies);
 
+  // generates random clip
   // plays clip at a random timestamp
   // disables user input until done playing
   async function handlePlay() {
+    setIsClipPlaying(true);
+    setIsLoading(true);
+    await generateMedia();
+
     if (videoElementRef.current) {
       const videoElement = videoElementRef.current;
       const fullDuration = videoElement.duration;
@@ -60,10 +66,8 @@ export default function ClipPlayer({ type }: { type: string }) {
       videoElement.currentTime = randomStart;
       setTimestamp(videoElement.currentTime);
       videoElement.volume = 1;
-      setIsClipPlaying(true);
-      setIsLoading(true);
 
-      await waitForEvent(videoElement, "loadeddata");
+      await waitForEvent(videoElement, "timeupdate");
 
       videoElement.play();
 
@@ -133,43 +137,51 @@ export default function ClipPlayer({ type }: { type: string }) {
     }
   }
 
-  // skips current clip
-  // generate new clip
-  function handleSkip() {
-    resetAll();
-    generateMedia();
-  }
-
   // set user input to empty string and set startup states to default values
   function resetAll() {
     setCurrentSrc("");
     setCurrentTitle("");
+    setClueTitle([]);
     setUserGuess("");
     setFutureScore(100);
     setReplayDuration(5000);
     setTimestamp(0);
     setWrongGuesses([]);
     setIsClipPlaying(false);
+    setIsLoading(false);
     setHasUserInput(false);
     setIsFirstTimePlay(true);
   }
 
-  // generate media based on type and set it to src and title
+  // generate clip based on type and set it to src and title
   async function generateMedia() {
     switch (type) {
       case "series":
         const generatedSeries = generateSeries();
-        const vid = ref(firebaseStorage, generatedSeries.src);
-        const url = await getDownloadURL(vid);
-
-        if (
+        const clipSeries = ref(firebaseStorage, generatedSeries.src);
+        const clipUrl = await getDownloadURL(clipSeries);
+        const clipSeriesAlreadyDone =
           currentProgress.includes(generatedSeries.title) ||
-          generatedSeries.title === currentTitle
-        ) {
+          generatedSeries.title === currentTitle;
+
+        if (clipSeriesAlreadyDone) {
           return generateMedia();
         } else {
-          setCurrentSrc(url);
+          setCurrentSrc(clipUrl);
           setCurrentTitle(generatedSeries.title);
+
+          const allowedChar = /[ \-:,.\/]/;
+          const underScoreArray = generatedSeries.title
+            .split("")
+            .map((char) => {
+              if (!allowedChar.test(char)) {
+                return Math.random() < 0.75 ? "__" : char;
+              } else {
+                return char;
+              }
+            });
+
+          setClueTitle(underScoreArray);
         }
         break;
       case "movies":
@@ -196,9 +208,9 @@ export default function ClipPlayer({ type }: { type: string }) {
     }
   }
 
-  // at mount, execute generate media and disable cheating
+  // at mount, disable cheating
   useEffect(() => {
-    generateMedia();
+    resetAll();
     disableCHEATING();
   }, []);
 
@@ -220,6 +232,23 @@ export default function ClipPlayer({ type }: { type: string }) {
             </div>
           ))}
         </div>
+        {isCorrectModalOpen ? (
+          <div className="ms-12 me-12 align-center flex flex-wrap gap-3 font-bold text-center">
+            {currentTitle.split("").map((letter, index) => {
+              return <span key={index}>{letter}</span>;
+            })}
+          </div>
+        ) : (
+          <div className="ms-12 me-12 flex flex-wrap gap-3 font-bold text-center">
+            {clueTitle.map((letter, index) => {
+              return (
+                <span className={letter === " " ? "ms-3 me-3" : ""} key={index}>
+                  {letter}
+                </span>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       <section className="relative">
@@ -273,7 +302,7 @@ export default function ClipPlayer({ type }: { type: string }) {
         />
 
         <datalist id="suggestions">
-          {userGuess.length > 1
+          {userGuess.length > 0
             ? allMedia.map((element, index) => (
                 <option key={index} value={element.title} />
               ))
@@ -304,7 +333,7 @@ export default function ClipPlayer({ type }: { type: string }) {
           </button>
           <button
             className="ps-4 pe-4 pt-2 pb-2 rounded-lg bg-white font-bold"
-            onClick={handleSkip}
+            onClick={resetAll}
             disabled={!hasUserInput}
             style={!hasUserInput ? { opacity: 0.5, cursor: "no-drop" } : {}}
           >
@@ -333,7 +362,7 @@ export default function ClipPlayer({ type }: { type: string }) {
           buttonLabel="next clip ➡️"
           buttonAction={() => {
             setIsModalCorrectOpen(false);
-            handleSkip();
+            resetAll();
           }}
         />
       )}
@@ -346,7 +375,7 @@ export default function ClipPlayer({ type }: { type: string }) {
         buttonLabel="skip ⏩"
         buttonAction={() => {
           setIsSkipModalOpen(false);
-          handleSkip();
+          resetAll();
         }}
       />
     </main>
