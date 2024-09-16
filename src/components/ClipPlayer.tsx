@@ -61,20 +61,23 @@ export default function ClipPlayer({ type }: { type: string }) {
       setTimestamp(videoElement.currentTime);
       videoElement.volume = 1;
       setIsClipPlaying(true);
-      videoElement.load();
       setIsLoading(true);
+      videoElementRef.current?.load();
 
       await waitForEvent(videoElement, "loadeddata");
 
-      setIsLoading(false);
       videoElement.play();
 
-      await sleepFor(replayDuration);
+      if (videoElement.played) {
+        setIsLoading(false);
 
-      videoElement.pause();
-      setIsClipPlaying(false);
-      setIsFirstTimePlay(false);
-      setHasUserInput(true);
+        await sleepFor(replayDuration);
+
+        videoElement.pause();
+        setIsClipPlaying(false);
+        setIsFirstTimePlay(false);
+        setHasUserInput(true);
+      }
     }
   }
 
@@ -88,6 +91,7 @@ export default function ClipPlayer({ type }: { type: string }) {
     setUserGuess("");
 
     if (cleanGuess === currentTitle) {
+      setHasUserInput(false);
       correctSound.volume = 0.25;
       correctSound.play();
       setIsModalCorrectOpen(true);
@@ -222,16 +226,12 @@ export default function ClipPlayer({ type }: { type: string }) {
           className="rounded-xl"
         />
 
-        {isLoading ? (
-          <div
-            className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl"
-            style={{ zIndex: -1 }}
-          >
-            loading...
-          </div>
-        ) : (
-          ""
-        )}
+        <div
+          className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl"
+          style={{ zIndex: -1 }}
+        >
+          {isLoading ? "loading..." : ""}
+        </div>
 
         {!isClipPlaying ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl">
@@ -257,7 +257,7 @@ export default function ClipPlayer({ type }: { type: string }) {
         onSubmit={handleGuess}
       >
         <input
-          id="guessInput"
+          name="guess"
           className="text-black p-2 rounded-lg w-96 text-center"
           type="text"
           onChange={(e) => setUserGuess(e.target.value)}
@@ -270,7 +270,9 @@ export default function ClipPlayer({ type }: { type: string }) {
 
         <datalist id="suggestions">
           {userGuess.length > 1
-            ? allMedia.map((element) => <option value={element.title} />)
+            ? allMedia.map((element, index) => (
+                <option key={index} value={element.title} />
+              ))
             : ""}
         </datalist>
 

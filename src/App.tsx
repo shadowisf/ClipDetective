@@ -25,7 +25,7 @@ export default function App() {
           to="/movies"
           className="ps-4 pe-4 pt-2 pb-2 rounded-lg text-white font-bold bg-[#5D5D81]"
         >
-          movies mode 🎬
+          movies mode 🎬 (wip)
         </Link>
 
         <button

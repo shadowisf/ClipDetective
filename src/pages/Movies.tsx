@@ -1,13 +1,14 @@
 import { Fragment } from "react";
 import NavBar from "../components/NavBar";
-import ClipPlayer from "../components/ClipPlayer";
 import Footer from "../components/Footer";
 
 export default function Movies() {
   return (
     <Fragment>
       <NavBar />
-      <ClipPlayer type="movies" />
+      <div className="flex justify-center items-center text-3xl font-bold h-screen">
+        movies section coming soon!
+      </div>
       <Footer />
     </Fragment>
   );

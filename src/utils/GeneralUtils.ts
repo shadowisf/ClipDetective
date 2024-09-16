@@ -1,5 +1,5 @@
 export async function waitForEvent(
-  target: HTMLVideoElement,
+  target: HTMLElement,
   eventType: string
 ): Promise<void> {
   return new Promise<void>((resolve) => {

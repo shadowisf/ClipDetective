@@ -207,7 +207,7 @@ export const series = [
     title64: "ZmFsbG91dA==",
     src: ["ZmFsbG91dA==_1.mp4", "ZmFsbG91dA==_2.mp4", "ZmFsbG91dA==_3.mp4"],
   },
-  /* {
+  {
     title: "breaking bad",
     title64: "YnJlYWtpbmcgYmFk",
     src: [
@@ -215,8 +215,8 @@ export const series = [
       "YnJlYWtpbmcgYmFk_2.mp4",
       "YnJlYWtpbmcgYmFk_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "avatar: the last airbender",
     title64: "YXZhdGFyOiB0aGUgbGFzdCBhaXJiZW5kZXI=",
     src: [
@@ -224,8 +224,8 @@ export const series = [
       "YXZhdGFyOiB0aGUgbGFzdCBhaXJiZW5kZXI=_2.mp4",
       "YXZhdGFyOiB0aGUgbGFzdCBhaXJiZW5kZXI=_3.mp4",
     ],
-  }, */
-  /*  {
+  },
+  {
     title: "the witcher: blood origin",
     title64: "dGhlIHdpdGNoZXI6IGJsb29kIG9yaWdpbg==",
     src: [
@@ -233,8 +233,8 @@ export const series = [
       "dGhlIHdpdGNoZXI6IGJsb29kIG9yaWdpbg==_2.mp4",
       "dGhlIHdpdGNoZXI6IGJsb29kIG9yaWdpbg==_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the watcher",
     title64: "dGhlIHdhdGNoZXI=",
     src: [
@@ -242,7 +242,7 @@ export const series = [
       "dGhlIHdhdGNoZXI=_2.mp4",
       "dGhlIHdhdGNoZXI=_3.mp4",
     ],
-  }, */
+  },
   /* {
     title: "the walking dead: dead city",
     title64: "dGhlIHdhbGtpbmcgZGVhZDogZGVhZCBjaXR5",
