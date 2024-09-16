@@ -62,7 +62,6 @@ export default function ClipPlayer({ type }: { type: string }) {
       videoElement.volume = 1;
       setIsClipPlaying(true);
       setIsLoading(true);
-      videoElementRef.current?.load();
 
       await waitForEvent(videoElement, "loadeddata");
 
@@ -90,20 +89,25 @@ export default function ClipPlayer({ type }: { type: string }) {
 
     setUserGuess("");
 
-    if (cleanGuess === currentTitle) {
-      setHasUserInput(false);
-      correctSound.volume = 0.25;
-      correctSound.play();
-      setIsModalCorrectOpen(true);
-      setCurrentProgress((prevProgress) => [...prevProgress, currentTitle]);
-      setCurrentScore(currentScore + futureScore);
-    } else if (cleanGuess === "") {
-      return;
-    } else {
-      incorrectSound.volume = 0.25;
-      incorrectSound.play();
-      setWrongGuesses((prevWrongGuesses) => [...prevWrongGuesses, cleanGuess]);
-      wrongGuesses.length === 4 ? setIsSkipModalOpen(true) : "";
+    switch (true) {
+      case cleanGuess === currentTitle:
+        correctSound.volume = 0.25;
+        correctSound.play();
+        setIsModalCorrectOpen(true);
+        setHasUserInput(false);
+        setCurrentProgress((prevProgress) => [...prevProgress, currentTitle]);
+        setCurrentScore(currentScore + futureScore);
+        break;
+      case cleanGuess === "":
+        return;
+      default:
+        incorrectSound.volume = 0.25;
+        incorrectSound.play();
+        setWrongGuesses((prevWrongGuesses) => [
+          ...prevWrongGuesses,
+          cleanGuess,
+        ]);
+        wrongGuesses.length === 4 ? setIsSkipModalOpen(true) : "";
     }
   }
 
