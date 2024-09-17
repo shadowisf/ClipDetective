@@ -524,15 +524,25 @@ export const series = [
   }, */
 ];
 
+let previousSrc: string;
+
 export function generateSeries() {
   const randomSeriesIndex = Math.floor(Math.random() * series.length);
   const selectedSeries = series[randomSeriesIndex];
 
-  const randomSrcIndex = Math.floor(Math.random() * selectedSeries.src.length);
-  const selectedSrc = selectedSeries.src[randomSrcIndex];
+  let randomSrc;
+
+  do {
+    const randomSrcIndex = Math.floor(
+      Math.random() * selectedSeries.src.length
+    );
+    randomSrc = selectedSeries.src[randomSrcIndex];
+  } while (randomSrc === previousSrc);
+
+  previousSrc = randomSrc;
 
   return {
     title: selectedSeries.title,
-    src: selectedSrc,
+    src: randomSrc,
   };
 }

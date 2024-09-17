@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { generateSeries, series } from "../utils/SeriesUtils";
 import { movies } from "../utils/MoviesUtils";
 import { PlayIcon } from "@heroicons/react/24/solid";
@@ -31,7 +31,6 @@ export default function ClipPlayer({ type }: { type: string }) {
   const [isClipPlaying, setIsClipPlaying] = useState<boolean>(false);
   const [hasUserInput, setHasUserInput] = useState<boolean>(false);
   const [isFirstTimePlay, setIsFirstTimePlay] = useState<boolean>(true);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   // modals
   const [isCorrectModalOpen, setIsModalCorrectOpen] = useState<boolean>(false);
@@ -54,7 +53,7 @@ export default function ClipPlayer({ type }: { type: string }) {
   // disables user input until done playing
   async function handlePlay() {
     setIsClipPlaying(true);
-    setIsLoading(true);
+
     await generateMedia();
 
     if (videoElementRef.current) {
@@ -72,8 +71,6 @@ export default function ClipPlayer({ type }: { type: string }) {
       videoElement.play();
 
       if (videoElement.played) {
-        setIsLoading(false);
-
         await sleepFor(replayDuration);
 
         videoElement.pause();
@@ -148,13 +145,14 @@ export default function ClipPlayer({ type }: { type: string }) {
     setTimestamp(0);
     setWrongGuesses([]);
     setIsClipPlaying(false);
-    setIsLoading(false);
     setHasUserInput(false);
     setIsFirstTimePlay(true);
   }
 
   // generate clip based on type and set it to src and title
   async function generateMedia() {
+    const allowedChar = /[ \-:,.\/]/;
+
     switch (type) {
       case "series":
         const generatedSeries = generateSeries();
@@ -170,12 +168,11 @@ export default function ClipPlayer({ type }: { type: string }) {
           setCurrentSrc(clipUrl);
           setCurrentTitle(generatedSeries.title);
 
-          const allowedChar = /[ \-:,.\/]/;
           const underScoreArray = generatedSeries.title
             .split("")
             .map((char) => {
               if (!allowedChar.test(char)) {
-                return Math.random() < 0.75 ? "__" : char;
+                return Math.random() < 0.85 ? "_" : char;
               } else {
                 return char;
               }
@@ -217,7 +214,7 @@ export default function ClipPlayer({ type }: { type: string }) {
   return (
     <main className="ms-10 me-10 flex flex-col justify-center items-center h-screen gap-5">
       <section className="flex flex-col gap-5 text-center">
-        <div className="flex gap-5 justify-center">
+        <div className="flex gap-12 justify-center">
           <span>
             <strong>score:</strong> {currentScore}
           </span>
@@ -253,18 +250,12 @@ export default function ClipPlayer({ type }: { type: string }) {
 
       <section className="relative">
         <video
+          disableRemotePlayback={true}
           ref={videoElementRef}
           src={currentSrc}
           width="900"
           className="rounded-xl"
         />
-
-        <div
-          className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl"
-          style={{ zIndex: -1 }}
-        >
-          {isLoading ? "loading..." : ""}
-        </div>
 
         {!isClipPlaying ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl">
@@ -277,11 +268,16 @@ export default function ClipPlayer({ type }: { type: string }) {
                 click play to start
               </button>
             ) : (
-              <span>any guesses? 🤓</span>
+              "any guesses? 🤓"
             )}
           </div>
         ) : (
-          ""
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center text-white bg-black rounded-xl"
+            style={{ zIndex: -1 }}
+          >
+            loading... 🪄
+          </div>
         )}
       </section>
 
