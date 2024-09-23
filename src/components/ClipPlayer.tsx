@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { generateSeries, series } from "../utils/SeriesUtils";
 import { movies } from "../utils/MoviesUtils";
 import { PlayIcon } from "@heroicons/react/24/solid";

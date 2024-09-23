@@ -261,7 +261,7 @@ export const series = [
       "dGhlIHF1ZWVucyBnYW1iaXQ=_3.mp4",
     ],
   },
-  /* {
+  {
     title: "the lord of the rings: rings of power",
     title64: "dGhlIGxvcmQgb2YgdGhlIHJpbmdzOiByaW5ncyBvZiBwb3dlcg==",
     src: [
@@ -269,8 +269,8 @@ export const series = [
       "dGhlIGxvcmQgb2YgdGhlIHJpbmdzOiByaW5ncyBvZiBwb3dlcg==_2.mp4",
       "dGhlIGxvcmQgb2YgdGhlIHJpbmdzOiByaW5ncyBvZiBwb3dlcg==_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "the good place",
     title64: "dGhlIGdvb2QgcGxhY2U=",
     src: [
@@ -278,8 +278,8 @@ export const series = [
       "dGhlIGdvb2QgcGxhY2U=_2.mp4",
       "dGhlIGdvb2QgcGxhY2U=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "tales from the loop",
     title64: "dGFsZXMgZnJvbSB0aGUgbG9vcA==",
     src: [
@@ -287,8 +287,8 @@ export const series = [
       "dGFsZXMgZnJvbSB0aGUgbG9vcA==_2.mp4",
       "dGFsZXMgZnJvbSB0aGUgbG9vcA==_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "sweet tooth",
     title64: "c3dlZXQgdG9vdGg=",
     src: [
@@ -296,8 +296,8 @@ export const series = [
       "c3dlZXQgdG9vdGg=_2.mp4",
       "c3dlZXQgdG9vdGg=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "sex education",
     title64: "c2V4IGVkdWNhdGlvbg==",
     src: [
@@ -305,8 +305,8 @@ export const series = [
       "c2V4IGVkdWNhdGlvbg==_2.mp4",
       "c2V4IGVkdWNhdGlvbg==_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "shadow and bone",
     title64: "c2hhZG93IGFuZCBib25l",
     src: [
@@ -314,35 +314,18 @@ export const series = [
       "c2hhZG93IGFuZCBib25l_2.mp4",
       "c2hhZG93IGFuZCBib25l_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "sense8",
     title64: "c2Vuc2U4",
-    src: [
-      "c2Vuc2U4_1.mp4",
-      "c2Vuc2U4_2.mp4",
-      "c2Vuc2U4_3.mp4",
-    ],
-  }, */
-  /* {
+    src: ["c2Vuc2U4_1.mp4", "c2Vuc2U4_2.mp4", "c2Vuc2U4_3.mp4"],
+  },
+  {
     title: "ratched",
     title64: "cmF0Y2hlZA==",
-    src: [
-      "cmF0Y2hlZA==_1.mp4",
-      "cmF0Y2hlZA==_2.mp4",
-      "cmF0Y2hlZA==_3.mp4",
-    ],
-  }, */
-  /* {
-    title: "paranormal",
-    title64: "cGFyYW5vcm1hbA==",
-    src: [
-      "cGFyYW5vcm1hbA==_1.mp4",
-      "cGFyYW5vcm1hbA==_2.mp4",
-      "cGFyYW5vcm1hbA==_3.mp4",
-    ],
-  }, */
-  /* {
+    src: ["cmF0Y2hlZA==_1.mp4", "cmF0Y2hlZA==_2.mp4", "cmF0Y2hlZA==_3.mp4"],
+  },
+  {
     title: "money heist",
     title64: "bW9uZXkgaGVpc3Q=",
     src: [
@@ -350,8 +333,8 @@ export const series = [
       "bW9uZXkgaGVpc3Q=_2.mp4",
       "bW9uZXkgaGVpc3Q=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "midnight mass",
     title64: "bWlkbmlnaHQgbWFzcw==",
     src: [
@@ -359,8 +342,8 @@ export const series = [
       "bWlkbmlnaHQgbWFzcw==_2.mp4",
       "bWlkbmlnaHQgbWFzcw==_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "man vs. bee",
     title64: "bWFuIHZzLiBiZWU=",
     src: [
@@ -368,8 +351,8 @@ export const series = [
       "bWFuIHZzLiBiZWU=_2.mp4",
       "bWFuIHZzLiBiZWU=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "lockwood & co.",
     title64: "bG9ja3dvb2QgJiBjby4=",
     src: [
@@ -377,8 +360,8 @@ export const series = [
       "bG9ja3dvb2QgJiBjby4=_2.mp4",
       "bG9ja3dvb2QgJiBjby4=_3.mp4",
     ],
-  }, */
-  /* {
+  },
+  {
     title: "locke & key",
     title64: "bG9ja2UgJiBrZXk=",
     src: [
@@ -386,35 +369,18 @@ export const series = [
       "bG9ja2UgJiBrZXk=_2.mp4",
       "bG9ja2UgJiBrZXk=_3.mp4",
     ],
-  }, */
-  /* {
-    title: "kim's convenience",
-    title64: "a2ltJ3MgY29udmVuaWVuY2U=",
-    src: [
-      "a2ltJ3MgY29udmVuaWVuY2U=_1.mp4",
-      "a2ltJ3MgY29udmVuaWVuY2U=_2.mp4",
-      "a2ltJ3MgY29udmVuaWVuY2U=_3.mp4",
-    ],
-  }, */
-  /*  {
+  },
+  {
     title: "devs",
     title64: "ZGV2cw==",
-    src: [
-      "ZGV2cw==_1.mp4",
-      "ZGV2cw==_2.mp4",
-      "ZGV2cw==_3.mp4",
-    ],
-  }, */
-  /* {
+    src: ["ZGV2cw==_1.mp4", "ZGV2cw==_2.mp4", "ZGV2cw==_3.mp4"],
+  },
+  {
     title: "humans",
     title64: "aHVtYW5z",
-    src: [
-      "aHVtYW5z_1.mp4",
-      "aHVtYW5z_2.mp4",
-      "aHVtYW5z_3.mp4",
-    ],
-  }, */
-  /* {
+    src: ["aHVtYW5z_1.mp4", "aHVtYW5z_2.mp4", "aHVtYW5z_3.mp4"],
+  },
+  {
     title: "how to sell drugs online (fast)",
     title64: "aG93IHRvIHNlbGwgZHJ1Z3Mgb25saW5lIChmYXN0KQ==",
     src: [
@@ -422,25 +388,7 @@ export const series = [
       "aG93IHRvIHNlbGwgZHJ1Z3Mgb25saW5lIChmYXN0KQ==_2.mp4",
       "aG93IHRvIHNlbGwgZHJ1Z3Mgb25saW5lIChmYXN0KQ==_3.mp4",
     ],
-  }, */
-  /* {
-    title: "glitch",
-    title64: "Z2xpdGNo",
-    src: [
-      "Z2xpdGNo_1.mp4",
-      "Z2xpdGNo_2.mp4",
-      "Z2xpdGNo_3.mp4",
-    ],
-  }, */
-  /* {
-    title: "feria: the darkest light",
-    title64: "ZmVyaWE6IHRoZSBkYXJrZXN0IGxpZ2h0",
-    src: [
-      "ZmVyaWE6IHRoZSBkYXJrZXN0IGxpZ2h0_1.mp4",
-      "ZmVyaWE6IHRoZSBkYXJrZXN0IGxpZ2h0_2.mp4",
-      "ZmVyaWE6IHRoZSBkYXJrZXN0IGxpZ2h0_3.mp4",
-    ],
-  }, */
+  },
   /* {
     title: "euphoria",
     title64: "ZXVwaG9yaWE=",
