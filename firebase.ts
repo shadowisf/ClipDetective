@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getStorage } from "firebase/storage";
+import { FirebaseStorage, getStorage } from "firebase/storage";
+
+let firebaseApp;
+export let firebaseStorage: FirebaseStorage;
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -10,5 +13,9 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
-const firebaseApp = initializeApp(firebaseConfig);
-export const firebaseStorage = getStorage(firebaseApp);
+if (firebaseConfig.apiKey) {
+  firebaseApp = initializeApp(firebaseConfig);
+  firebaseStorage = getStorage(firebaseApp);
+} else {
+  alert("error accessing firebase");
+}
