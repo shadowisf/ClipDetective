@@ -18,4 +18,5 @@ if (firebaseConfig.apiKey) {
   firebaseStorage = getStorage(firebaseApp);
 } else {
   alert("error accessing firebase");
+  window.location.reload();
 }
